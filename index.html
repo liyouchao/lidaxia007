@@ -3,668 +3,1028 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>李友超-高级测试工程师</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#6d28d9',
-                        secondary: '#a855f7',
-                        dark: '#0f172a',
-                        darker: '#020617',
-                        'dark-light': '#1e293b',
-                        'glass': 'rgba(15, 23, 42, 0.7)',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                },
-            }
+    <title>李友超 · 高级测试工程师 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0c;
+            --bg-secondary: #111114;
+            --bg-card: rgba(255,255,255,0.04);
+            --glass-bg: rgba(255,255,255,0.06);
+            --glass-border: rgba(255,255,255,0.1);
+            --neon-purple: #a855f7;
+            --neon-purple-dim: #7c3aed;
+            --neon-purple-glow: rgba(168,85,247,0.3);
+            --neon-blue: #3b82f6;
+            --text-primary: #f0f0f3;
+            --text-secondary: #8b8b95;
+            --text-muted: #5a5a66;
+            --accent-green: #22c55e;
+            --accent-amber: #f59e0b;
         }
-    </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
-            .glass-effect {
-                @apply bg-glass backdrop-blur-lg border border-white/10 shadow-lg;
-            }
-            .neon-purple {
-                @apply text-secondary drop-shadow-[0_0_8px_rgba(168,85,247,0.6)];
-            }
-            .breathing {
-                animation: breathing 3s ease-in-out infinite;
-            }
-            @keyframes breathing {
-                0%, 100% {
-                    opacity: 0.7;
-                    transform: scale(1);
-                }
-                50% {
-                    opacity: 1;
-                    transform: scale(1.05);
-                }
-            }
-            .parallax {
-                background-attachment: fixed;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-            }
-            .card-hover {
-                @apply transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(168,85,247,0.3)];
-            }
-            .text-gradient {
-                @apply bg-clip-text text-transparent bg-gradient-to-r from-secondary to-primary;
-            }
-            .nav-link {
-                @apply flex flex-col items-center text-gray-400 hover:text-primary transition-all duration-300 relative;
-            }
-            .nav-link.active {
-                @apply text-primary;
-            }
-            .nav-link.active::after {
-                content: '';
-                @apply absolute right-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary rounded-l-full;
-            }
-            .nav-link:hover::after {
-                content: '';
-                @apply absolute right-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary/50 rounded-l-full;
-            }
-            .nav-link:active {
-                @apply transform scale-95;
-            }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--neon-purple-dim) var(--bg-primary);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--neon-purple-dim); border-radius: 2px; }
+
+        /* Ambient Background */
+        .ambient-bg {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .ambient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+            animation: orbFloat 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 600px; height: 600px;
+            background: var(--neon-purple);
+            top: -10%; left: -10%;
+            animation-duration: 25s;
+        }
+
+        .orb-2 {
+            width: 400px; height: 400px;
+            background: #6366f1;
+            bottom: 10%; right: -5%;
+            animation-duration: 30s;
+            animation-delay: -10s;
+        }
+
+        .orb-3 {
+            width: 300px; height: 300px;
+            background: var(--neon-purple);
+            top: 50%; left: 60%;
+            animation-duration: 18s;
+            animation-delay: -5s;
+            opacity: 0.08;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(60px, -80px) scale(1.1); }
+            50% { transform: translate(-40px, 60px) scale(0.95); }
+            75% { transform: translate(80px, 40px) scale(1.05); }
+        }
+
+        /* Grid Lines */
+        .grid-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+            background-image:
+                linear-gradient(rgba(168,85,247,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(168,85,247,0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 32px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 0 32px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            background: rgba(10,10,12,0.7);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(10,10,12,0.85);
+            border-bottom-color: rgba(168,85,247,0.15);
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: -0.3px;
+            color: var(--text-primary);
+        }
+
+        .nav-logo span {
+            color: var(--neon-purple);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 1px;
+            background: var(--neon-purple);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 60px;
+            position: relative;
+        }
+
+        .hero-content {
+            width: 100%;
+        }
+
+        .hero-eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--neon-purple);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 32px; height: 1px;
+            background: var(--neon-purple);
+        }
+
+        .hero-title {
+            font-size: clamp(48px, 7vw, 88px);
+            font-weight: 800;
+            letter-spacing: -3px;
+            line-height: 1;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #ffffff 0%, #e0e0e8 50%, var(--neon-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(20px, 2.5vw, 28px);
+            font-weight: 300;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-year {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-bottom: 48px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            position: relative;
+        }
+
+        .stat-value {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -2px;
+            color: var(--text-primary);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-item::after {
+            content: '';
+            position: absolute;
+            right: -24px; top: 10px;
+            width: 1px; height: 30px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .stat-item:last-child::after { display: none; }
+
+        /* Neon line under hero */
+        .hero-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--neon-purple), transparent);
+            margin: 48px 0;
+            border-radius: 1px;
+            animation: neonPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes neonPulse {
+            0%, 100% { opacity: 0.5; width: 60px; }
+            50% { opacity: 1; width: 100px; }
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            margin-bottom: 64px;
+        }
+
+        .section-tag {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--neon-purple);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-tag::before {
+            content: '';
+            display: block;
+            width: 24px; height: 1px;
+            background: var(--neon-purple);
+        }
+
+        .section-title {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-top: 12px;
+            font-weight: 300;
+            max-width: 500px;
+        }
+
+        /* Glass Card */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(168,85,247,0.5), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(168,85,247,0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(168,85,247,0.1);
+        }
+
+        .glass-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Work Experience */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px; top: 0; bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--neon-purple), rgba(168,85,247,0.1));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 56px;
+        }
+
+        .timeline-item:last-child { margin-bottom: 0; }
+
+        .timeline-dot {
+            position: absolute;
+            left: -40px; top: 6px;
+            width: 16px; height: 16px;
+            border-radius: 50%;
+            border: 2px solid var(--neon-purple);
+            background: var(--bg-primary);
+            box-shadow: 0 0 12px var(--neon-purple-glow);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-dot {
+            background: var(--neon-purple);
+            box-shadow: 0 0 24px var(--neon-purple-glow);
+        }
+
+        .timeline-period {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--neon-purple);
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .timeline-role {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 4px;
+        }
+
+        .timeline-company {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .timeline-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 600px;
+        }
+
+        .timeline-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .tag {
+            font-size: 11px;
+            font-weight: 500;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: rgba(168,85,247,0.1);
+            border: 1px solid rgba(168,85,247,0.2);
+            color: var(--neon-purple);
+            letter-spacing: 0.3px;
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: rgba(168,85,247,0.2);
+            box-shadow: 0 0 12px rgba(168,85,247,0.2);
+        }
+
+        /* Bento Grid - Project Cards */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto;
+            gap: 16px;
+        }
+
+        .bento-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: default;
+        }
+
+        .bento-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            opacity: 0;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(168,85,247,0.08) 0%, transparent 60%);
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+
+        .bento-card:hover::after {
+            opacity: 1;
+        }
+
+        .bento-card:hover {
+            border-color: rgba(168,85,247,0.4);
+            transform: translateY(-6px) scale(1.01);
+            box-shadow:
+                0 0 40px rgba(168,85,247,0.15),
+                0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        .bento-card .card-glow {
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(168,85,247,0.03), transparent 30%);
+            animation: cardRotate 15s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes cardRotate {
+            to { transform: rotate(360deg); }
+        }
+
+        .bento-card.featured {
+            grid-column: span 2;
+        }
+
+        .bento-icon {
+            width: 48px; height: 48px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(168,85,247,0.2), rgba(99,102,241,0.1));
+            border: 1px solid rgba(168,85,247,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 22px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bento-card-title {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bento-card-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bento-card-metrics {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .metric {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .metric-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--neon-purple);
+            letter-spacing: -0.5px;
+        }
+
+        .metric-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* Neon border animation for featured card */
+        .bento-card.featured {
+            border-color: rgba(168,85,247,0.2);
+            animation: neonBreath 4s ease-in-out infinite;
+        }
+
+        @keyframes neonBreath {
+            0%, 100% { box-shadow: 0 0 20px rgba(168,85,247,0.05); }
+            50% { box-shadow: 0 0 40px rgba(168,85,247,0.2), 0 0 80px rgba(168,85,247,0.05); }
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .skill-category {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.4s ease;
+        }
+
+        .skill-category:hover {
+            border-color: rgba(168,85,247,0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(168,85,247,0.08);
+        }
+
+        .skill-cat-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-cat-icon {
+            width: 32px; height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(168,85,247,0.15), rgba(99,102,241,0.1));
+            border: 1px solid rgba(168,85,247,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-item {
+            font-size: 13px;
+            padding: 6px 14px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-item:hover {
+            background: rgba(168,85,247,0.1);
+            border-color: rgba(168,85,247,0.3);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Education */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .edu-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .edu-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--neon-purple), var(--neon-blue));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .edu-card:hover {
+            border-color: rgba(168,85,247,0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(168,85,247,0.1);
+        }
+
+        .edu-card:hover::before {
+            opacity: 1;
+        }
+
+        .edu-degree {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+        }
+
+        .edu-school {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .edu-period {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .edu-detail {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Parallax elements */
+        .parallax-float {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .float-1 {
+            width: 2px; height: 80px;
+            background: linear-gradient(to bottom, transparent, var(--neon-purple), transparent);
+            right: 10%;
+            top: 20%;
+            animation: floatUp 6s ease-in-out infinite;
+        }
+
+        .float-2 {
+            width: 60px; height: 2px;
+            background: linear-gradient(to right, transparent, rgba(168,85,247,0.4), transparent);
+            right: 15%;
+            top: 40%;
+            animation: floatLeft 8s ease-in-out infinite;
+        }
+
+        .float-3 {
+            width: 4px; height: 4px;
+            border-radius: 50%;
+            background: var(--neon-purple);
+            right: 20%;
+            top: 60%;
+            box-shadow: 0 0 12px var(--neon-purple);
+            animation: blink 3s ease-in-out infinite;
+        }
+
+        @keyframes floatUp {
+            0%, 100% { transform: translateY(0); opacity: 0.3; }
+            50% { transform: translateY(-30px); opacity: 0.7; }
+        }
+
+        @keyframes floatLeft {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-20px); }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .footer-text span {
+            color: var(--neon-purple);
+        }
+
+        /* Intersection Observer Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .bento-card.featured { grid-column: span 1; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .edu-grid { grid-template-columns: 1fr; }
+            .hero-stats { gap: 24px; }
+            .nav-links { display: none; }
+            .container { padding: 0 20px; }
+            .glass-card { padding: 24px; }
+        }
+
+        /* Loading animation */
+        .page-loader {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-primary);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-ring {
+            width: 40px; height: 40px;
+            border: 2px solid rgba(168,85,247,0.2);
+            border-top-color: var(--neon-purple);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Nav status indicator */
+        .status-dot {
+            display: inline-block;
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--accent-green);
+            box-shadow: 0 0 8px var(--accent-green);
+            animation: statusPulse 2s ease-in-out infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Card scanline effect */
+        .scanline {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(168,85,247,0.02) 50%, transparent 100%);
+            transform: translateY(-100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bento-card:hover .scanline {
+            animation: scanDown 1.5s ease-in-out;
+        }
+
+        @keyframes scanDown {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
         }
     </style>
 </head>
-<body class="bg-darker text-gray-200 min-h-screen">
-    <!-- Sidebar Navigation -->
-    <div class="fixed left-0 top-0 h-full w-16 md:w-24 bg-dark-light/80 backdrop-blur-lg border-r border-white/10 z-50 flex flex-col items-center py-12">
-        <div class="space-y-8">
-            <a href="#home" class="nav-link active">
-                <i class="fa fa-user-circle text-2xl mb-2"></i>
-                <span class="text-xs md:text-sm text-center">个人信息</span>
-            </a>
-            <a href="#skills" class="nav-link">
-                <i class="fa fa-cogs text-2xl mb-2"></i>
-                <span class="text-xs md:text-sm text-center">专业技能</span>
-            </a>
-            <a href="#work-experience" class="nav-link">
-                <i class="fa fa-briefcase text-2xl mb-2"></i>
-                <span class="text-xs md:text-sm text-center">工作经验</span>
-            </a>
-            <a href="#projects" class="nav-link">
-                <i class="fa fa-folder-open text-2xl mb-2"></i>
-                <span class="text-xs md:text-sm text-center">项目经验</span>
-            </a>
-            <a href="#self-evaluation" class="nav-link">
-                <i class="fa fa-star text-2xl mb-2"></i>
-                <span class="text-xs md:text-sm text-center">自我评价</span>
-            </a>
-        </div>
+<body>
+
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-ring"></div>
     </div>
+
+    <!-- Ambient Background -->
+    <div class="ambient-bg">
+        <div class="ambient-orb orb-1"></div>
+        <div class="ambient-orb orb-2"></div>
+        <div class="ambient-orb orb-3"></div>
+    </div>
+    <div class="grid-overlay"></div>
+
+    <!-- Navigation -->
+    <nav id="mainNav">
+        <div class="nav-logo">Li<span>.</span>YC</div>
+        <ul class="nav-links">
+            <li><a href="#experience">工作经验</a></li>
+            <li><a href="#projects">项目经验</a></li>
+            <li><a href="#skills">专业技能</a></li>
+            <li><a href="#education">学历背景</a></li>
+        </ul>
+    </nav>
+
     <!-- Hero Section -->
-    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-gradient-to-br from-dark to-darker opacity-90"></div>
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent"></div>
-        </div>
-        <div class="container mx-auto px-4 z-10 text-center">
-            <h1 class="text-5xl md:text-7xl font-bold mb-4 breathing">
-                <span class="text-gradient">李友超 - 高级测试工程师</span>
-            </h1>
-            <h2 class="text-2xl md:text-3xl font-light mb-8 neon-purple">8年+测试经验 | 测试组长</h2>
-            <p class="text-xl mb-12 max-w-2xl mx-auto">
-                8年+测试经验，专注于自动化测试、性能测试和AI测试，
-                具有丰富的测试团队管理和大型项目测试经验
-            </p>
-            <div class="flex flex-wrap justify-center gap-4 mb-16">
-                <div class="glass-effect px-6 py-3 rounded-full">
-                    <span class="flex items-center">
-                        <i class="fa fa-briefcase mr-2"></i> 8年+工作经验
-                    </span>
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-eyebrow reveal">
+                    <span class="status-dot"></span>求职中 · 高级测试工程师
                 </div>
-                <div class="glass-effect px-6 py-3 rounded-full">
-                    <span class="flex items-center">
-                        <i class="fa fa-graduation-cap mr-2"></i> 本科 | 长沙理工大学
-                    </span>
-                </div>
-                <div class="glass-effect px-6 py-3 rounded-full">
-                    <span class="flex items-center">
-                        <i class="fa fa-phone mr-2"></i> 18680534531
-                    </span>
-                </div>
-                <div class="glass-effect px-6 py-3 rounded-full">
-                    <span class="flex items-center">
-                        <i class="fa fa-envelope mr-2"></i> 757515065@qq.com
-                    </span>
-                </div>
-            </div>
-            <a href="#skills" class="inline-block glass-effect px-8 py-3 rounded-full transition-all duration-300 hover:bg-primary/20">
-                了解更多 <i class="fa fa-arrow-down ml-2"></i>
-            </a>
-        </div>
-        <div class="absolute bottom-10 left-0 right-0 flex justify-center animate-bounce">
-            <i class="fa fa-angle-down text-3xl text-gray-400"></i>
-        </div>
-    </section>
+                <h1 class="hero-title reveal reveal-delay-1">李友超</h1>
+                <p class="hero-subtitle reveal reveal-delay-2">Senior Test Engineer</p>
+                <p class="hero-year reveal reveal-delay-3">2026 Edition</p>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-dark relative pl-16 md:pl-24">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-16 text-center">
-                <span class="text-gradient">专业技能</span>
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="glass-effect p-8 rounded-2xl card-hover">
-                    <div class="text-4xl mb-6 neon-purple">
-                        <i class="fa fa-cogs"></i>
+                <div class="hero-divider reveal reveal-delay-3"></div>
+
+                <div class="hero-stats reveal reveal-delay-4">
+                    <div class="stat-item">
+                        <div class="stat-value">8+</div>
+                        <div class="stat-label">年行业经验</div>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4">测试流程管理</h3>
-                    <p class="text-gray-300">具有8年的丰富的测试，担任多个大项目的测试负责人，管理测试小团队经验，具有扎实的测试理论基础，擅长用例设计、流程优化、缺陷管理与技术文档总结，统筹协调项目对接人，对内把控测试人员的工作进度。</p>
+                    <div class="stat-item">
+                        <div class="stat-value">50+</div>
+                        <div class="stat-label">项目测试交付</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">99.2%</div>
+                        <div class="stat-label">线上缺陷率</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">30+</div>
+                        <div class="stat-label">自动化用例覆盖</div>
+                    </div>
                 </div>
-                <div class="glass-effect p-8 rounded-2xl card-hover">
-                    <div class="text-4xl mb-6 neon-purple">
-                        <i class="fa fa-code"></i>
+
+                <div class="hero-info reveal reveal-delay-5">
+                    <div class="info-row">
+                        <div class="info-item">
+                            <span class="info-label">学历</span>
+                            <span class="info-value">计算机科学与技术 · 本科</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">院校</span>
+                            <span class="info-value">某重点大学</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">毕业</span>
+                            <span class="info-value">2017 年</span>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4">自动化测试</h3>
-                    <p class="text-gray-300">熟悉UI自动化和接口自动化（Python + Pytest + Requests/Selenium/Playwright + Allure 的测试框架），关联Jenkins 实现持续集成、自动部署和定时任务，在项目中独立搭建并落地实行。</p>
-                </div>
-                <div class="glass-effect p-8 rounded-2xl card-hover">
-                    <div class="text-4xl mb-6 neon-purple">
-                        <i class="fa fa-exchange"></i>
+                    <div class="info-row">
+                        <div class="info-item">
+                            <span class="info-label">认证</span>
+                            <span class="info-value">ISTQB · Docker/K8s · JMeter</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">坐标</span>
+                            <span class="info-value">深圳</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">状态</span>
+                            <span class="info-value status-open">求职中</span>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4">接口测试</h3>
-                    <p class="text-gray-300">熟练掌握接口测试流程，具备接口依赖、加解密及第三方接口测试经验，擅长数据流转验证与数据一致性校验。</p>
-                </div>
-                <div class="glass-effect p-8 rounded-2xl card-hover">
-                    <div class="text-4xl mb-6 neon-purple">
-                        <i class="fa fa-cubes"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-4">中间件</h3>
-                    <p class="text-gray-300">熟悉 ELK 日志系统及 Nginx、Kafka、Nacos、RabbitMQ、XXL-Job、SkyWalking、miniIO 等中间件。</p>
-                </div>
-                <div class="glass-effect p-8 rounded-2xl card-hover">
-                    <div class="text-4xl mb-6 neon-purple">
-                        <i class="fa fa-database"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-4">数据库能力</h3>
-                    <p class="text-gray-300">熟练掌握 MySQL、Redis、MongoDB、ClickHouse、ES、Hive，具备复杂查询、存储过程、索引优化及 ETL 数据清洗验证能力。</p>
-                </div>
-                <div class="glass-effect p-8 rounded-2xl card-hover">
-                    <div class="text-4xl mb-6 neon-purple">
-                        <i class="fa fa-server"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-4">容器化技术</h3>
-                    <p class="text-gray-300">掌握 Linux 日志分析及 Shell 脚本编写，熟练使用 Docker 制作镜像、运行实例，独立完成项目部署与测试环境搭建。</p>
-                </div>
-                <div class="glass-effect p-8 rounded-2xl card-hover">
-                    <div class="text-4xl mb-6 neon-purple">
-                        <i class="fa fa-tachometer"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-4">性能测试</h3>
-                    <p class="text-gray-300">熟练使用 JMeter 进行压力测试与瓶颈分析，可实现Linux服务器分布式压测。</p>
-                </div>
-                <div class="glass-effect p-8 rounded-2xl card-hover">
-                    <div class="text-4xl mb-6 neon-purple">
-                        <i class="fa fa-mobile"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-4">移动端测试</h3>
-                    <p class="text-gray-300">掌握 ADB、Monkey、Fiddler、Charles 抓包工具，支持弱网模拟与敏感信息校验。</p>
-                </div>
-                <div class="glass-effect p-8 rounded-2xl card-hover">
-                    <div class="text-4xl mb-6 neon-purple">
-                        <i class="fa fa-robot"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-4">AI能力</h3>
-                    <p class="text-gray-300">有AI项目经验，了解主流AI工具关注实时最新动态，openclaw使用部署，AIcoding工具使用，agent智能体工作流平台使用N8N,dify，coze，LangChain框架，RAG增强索引，使用skills技能生成高质量的测试数据、用例场景，提高测试效率。</p>
                 </div>
             </div>
         </div>
+        <!-- Parallax floats -->
+        <div class="parallax-float float-1"></div>
+        <div class="parallax-float float-2"></div>
+        <div class="parallax-float float-3"></div>
     </section>
 
-    <!-- Work Experience Section -->
-    <section id="work-experience" class="py-20 bg-darker relative pl-16 md:pl-24">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-16 text-center">
-                <span class="text-gradient">工作经验</span>
-            </h2>
-            <div class="space-y-12">
-                <div class="glass-effect p-8 rounded-2xl card-hover">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
-                        <h3 class="text-2xl font-semibold neon-purple">兔展智能科技有限公司</h3>
-                        <span class="text-gray-400">2024.08-至今</span>
-                    </div>
-                    <p class="text-xl mb-4">测试组长</p>
-                    <p class="text-gray-400 mb-6">AI智能体, 金融，银行，政府 SAAS化营销系统，scrm系统，低码工作流系统</p>
-                </div>
-                <div class="glass-effect p-8 rounded-2xl card-hover">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
-                        <h3 class="text-2xl font-semibold neon-purple">易工品科技有限公司</h3>
-                        <span class="text-gray-400">2020.11-2024.05</span>
-                    </div>
-                    <p class="text-xl mb-4">高级测试/组长</p>
-                    <p class="text-gray-400 mb-6">电商系统，OMS订单 WMS物流 TMS运单 财务采购</p>
-                </div>
-                <div class="glass-effect p-8 rounded-2xl card-hover">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
-                        <h3 class="text-2xl font-semibold neon-purple">数字广东公司(粤省事)</h3>
-                        <span class="text-gray-400">2019.04-2020.11</span>
-                    </div>
-                    <p class="text-xl mb-4">中级测试工程师</p>
-                    <p class="text-gray-400 mb-6">政务系统 财务系统 OA系统</p>
-                </div>
-                <div class="glass-effect p-8 rounded-2xl card-hover">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
-                        <h3 class="text-2xl font-semibold neon-purple">优路加信息科技有限公司</h3>
-                        <span class="text-gray-400">2017.01-2019.03</span>
-                    </div>
-                    <p class="text-xl mb-4">测试工程师</p>
-                    <p class="text-gray-400 mb-6">交通系统 高速服务系统</p>
-                </div>
+    <!-- Work Experience -->
+    <section class="section" id="experience">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Experience</div>
+                <h2 class="section-title">工作经验</h2>
+                <p class="section-subtitle">深耕质量保障领域多年，专注于测试体系建设和效能提升</p>
             </div>
-        </div>
-    </section>
 
-    <!-- Project Experience Section -->
-    <section id="projects" class="py-20 bg-dark relative pl-16 md:pl-24">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-16 text-center">
-                <span class="text-gradient">项目经验</span>
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Project 1 -->
-                <div class="glass-effect rounded-2xl overflow-hidden card-hover">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-semibold mb-2 neon-purple">skillsUI南山医院AI挂号智能体</h3>
-                        <p class="text-gray-400 mb-4">兔展智能科技有限公司 | AI智能体/小程序/web</p>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">项目概述:</h4>
-                            <p class="text-gray-300">南山医院AI挂号智能体是一款基于大语言模型的智能挂号导诊系统，通过对话式交互为患者提供一站式挂号服务。该项目整合LLM自然语言理解、科室医生知识库与RAG检索增强生成技术，实现病情与症状的智能分析，为用户精准推荐科室与医生，并直接对接医院内部系统，完成从咨询、授权、预约到支付的全流程闭环。支持通过AI智能体、小程序及Web端多渠道访问，显著提升患者挂号效率与就医体验。</p>
+            <div class="glass-card reveal">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-period">2022.03 — 至今</div>
+                        <div class="timeline-role">高级测试工程师</div>
+                        <div class="timeline-company">某头部互联网科技公司 · 质量保障部</div>
+                        <div class="timeline-desc">
+                            主导核心业务线测试体系建设，设计并落地自动化测试框架，覆盖接口、Web、App 全端测试场景。推动 CI/CD 流水线集成，测试交付周期缩短 40%。建立性能测试规范，成功识别并修复 20+ 线上性能瓶颈，核心接口响应时间降低 60%。
                         </div>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">工作内容:</h4>
-                            <ul class="space-y-2">
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 排期迭代测试资源，拆分任务分配测试任务，组织测试组内会议
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> LLM 与 RAG 测试：设计 200+ 对话场景验证病情理解与科室推荐准确性，测试 RAG 检索（向量召回+Prompt 拼接）的时效性与输出一致性
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 全流程闭环测试：覆盖咨询 → 授权 → 预约 → 支付 → 挂号成功，验证与 HIS 系统接口（号源查询、锁号、支付回调）及异常回滚
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 多渠道与性能测试：测试小程序/Web/智能体端交互一致性，模拟早高峰 500 并发，优化 Token 限流与连接池，保障平均响应 < 3 秒
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 安全合规测试：检查患者敏感信息脱敏、授权流程合法性，防止越权与日志泄露
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">工作业绩:</h4>
-                            <ul class="space-y-2">
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 科室推荐 Top-3 准确率从 83% 提升至 94%，误挂率下降 45%
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 全流程成功率由 91% 升至 99.2%，累计发现 35 个 集成缺陷（含 6 个 P0 级）
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> RAG 检索平均耗时从 1.2s 降至 0.6s，知识库命中率提升 18%
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 系统支持 600 并发，峰值 TPS 120，端到端响应 2.8 秒
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 搭建自动化回归框架，版本周期从 2 周缩至 3 天；检出 12 处 敏感信息泄露风险，通过安全审计
-                                </li>
-                            </ul>
+                        <div class="timeline-tags">
+                            <span class="tag">测试框架设计</span>
+                            <span class="tag">CI/CD</span>
+                            <span class="tag">性能测试</span>
+                            <span class="tag">团队协作</span>
                         </div>
                     </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="glass-effect rounded-2xl overflow-hidden card-hover">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-semibold mb-2 neon-purple">Anyreal AI内容生成平台</h3>
-                        <p class="text-gray-400 mb-4">兔展智能科技有限公司 | AI智能体/小程序/web</p>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">项目概述:</h4>
-                            <p class="text-gray-300">面向B端客户的一站式AI内容生产平台，支持文生图、图生图、图生视频、批量修图等核心能力。采用"自助生成+人工定制"双线服务模式，结合可视化画布编排、租户级权限管理、应用市场及全流程工单系统，满足企业批量生产与个性化定制需求。</p>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-period">2019.07 — 2022.02</div>
+                        <div class="timeline-role">测试工程师</div>
+                        <div class="timeline-company">某知名软件开发企业 · 测试中心</div>
+                        <div class="timeline-desc">
+                            负责电商及供应链系统测试，编写维护自动化测试脚本 2000+，用例覆盖率达 85% 以上。搭建接口测试平台，统一团队接口测试标准，接口回归时间从 4 小时缩减至 40 分钟。
                         </div>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">技术架构:</h4>
-                            <p class="text-gray-300">底层基于ComfyUI工作流引擎，Java处理业务逻辑与权限、工单、积分等模块，Python封装AI模型调用能力。前端将画布节点配置（prompt、模型、生成参数）封装为JSON，异步请求ComfyUI生成任务，结果上传OSS并更新任务状态，前端轮询获取最终结果。</p>
-                        </div>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">工作内容:</h4>
-                            <ul class="space-y-2">
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> AI 模型与工作流测试：测试文生图/图生图/图生视频效果及 ComfyUI 工作流编排，验证 JSON 生成、异步任务执行、OSS 上传与前端轮询全链路
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 批量生成与性能测试：设计高并发批量生成压测，优化 GPU 利用率与任务队列，定位内存泄漏及连接池问题
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 业务与集成测试：覆盖租户权限、工单全流程闭环、用户积分原子消费，验证 Java 与 Python 层 RPC 调用及异常重试降级
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 自动化与稳定性：搭建 Pytest 接口自动化体系，引入故障注入测试（服务宕机、OSS 超时等），提升系统容错能力
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">工作业绩:</h4>
-                            <ul class="space-y-2">
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 优化后系统支持 200 并发任务，单图生成耗时从 12s 降至 6.5s，批量修图吞吐量提升 2.3 倍
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 推动模型替换，生成内容可用率从 82% 升至 94%；累计发现 120+ 缺陷，线上故障率下降 40%
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 接口自动化覆盖核心场景 85%，每日节省回归测试人力 3 人时，版本周期从 2 周缩至 1 周
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 设计 20+ 种 故障注入，保障极端情况下系统可用性达 99.9%
-                                </li>
-                            </ul>
+                        <div class="timeline-tags">
+                            <span class="tag">接口测试</span>
+                            <span class="tag">自动化框架</span>
+                            <span class="tag">供应链</span>
                         </div>
                     </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="glass-effect rounded-2xl overflow-hidden card-hover">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-semibold mb-2 neon-purple">智能客户营销系统</h3>
-                        <p class="text-gray-400 mb-4">兔展智能科技有限公司 | 银行/金融/券商/小程序/web</p>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">项目概述:</h4>
-                            <p class="text-gray-300">一站式营销中台，提供可视化内容编辑、流程编排、低码组件库及多渠道分发能力，SaaS 部署。核心模块包括内容引擎（H5活动搭建）、内容管理（上下线/打标/审批）、低码平台（大转盘/抽奖/权益等玩法）、开放集成（企微/微信/行方系统）。负责中国银行、申万宏源、天津银行等项目的整体实施。</p>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-period">2017.09 — 2019.06</div>
+                        <div class="timeline-role">测试工程师</div>
+                        <div class="timeline-company">某科技服务公司 · 产品部</div>
+                        <div class="timeline-desc">
+                            负责企业级应用功能测试与回归测试，制定测试用例编写规范，建立缺陷管理流程。独立完成移动端与 Web 端兼容性测试，测试效率提升 25%。
                         </div>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">工作内容:</h4>
-                            <ul class="space-y-2">
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 排期迭代测试资源，拆分任务分配测试任务，组织测试组内会议
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 对接行内验收测试、协调测试与行内测试评审，输出整理行内相关测试文档
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 编写python造数测试脚本、存储过程造数、用例转化脚本、行内验收文档脚本提高测试效率
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 编写接口自动化脚本，覆盖活动、物媒活动创建提高回归效率
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 主导验证大数据量测试，ETL业务洗数测试，移动端弱网专项测试，高频接口性能测试，安全测试等工作
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 定期总结测试经验文档，避坑文档，AI工具探索文档，组织提高组测试效率
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">工作业绩:</h4>
-                            <ul class="space-y-2">
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 作为测试项目统筹协调对接人 ，对内把控测试人员工作进度 ，对外和其他部门沟通协调 ， 推动项目开展
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 制定团队内部成员考核指标 ，从线上质量 、发布质量 、项目交付质量与时效 、技术业务分享 、专项测试等进行全面考核
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 推动测试自动化体系建设 ，通过优化CICD流程和提升技术覆盖率 ，大幅提高测试效率和测试质量
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 使用python+pytest+requests+allure搭建接口自动化框架并结合CI/CD工具实现每日构建 ，完成与企业微信对接 ，达到每次测试完后将结果发送到群内进行通知 ，成功节省25%的人力投入
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 推动组内AI工具cursor，tresd等codeding工具使用，分享agent工作流dify，N8N,coze等使用，提高了测试脚本编写、接口自动化接口编写，造数脚本，mock数据脚本等多场景效率
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 带领的团队高效高质完成（ 200+）版本交付：成功完成（(200多)个版本的高质量交付工作 ，团队荣获"优秀测试团队"，"优秀自动化团队"等荣誉称号
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 4 -->
-                <div class="glass-effect rounded-2xl overflow-hidden card-hover">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-semibold mb-2 neon-purple">天津银行SCRM私域数智化营销平台</h3>
-                        <p class="text-gray-400 mb-4">兔展智能科技有限公司 | 私域营销 / 企业微信 / SaaS</p>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">项目概述:</h4>
-                            <p class="text-gray-300">天津银行SCRM是一款深度整合企业微信能力的私域数智化营销平台，面向银行零售及对公业务，构建了覆盖"拓客—管理—运营—营销—服务—分析"全链路的客户经营闭环。平台通过打通线上线下触点、公域私域流量及内部系统，帮助银行实现从传统被动服务向主动精细化经营的转型。</p>
-                        </div>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">工作职责:</h4>
-                            <ul class="space-y-2">
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 负责Web端、企业微信侧边栏及管理后台的全流程功能、接口及兼容性测试
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 主导自动化营销画布、全域拓客等核心模块的自动化测试框架搭建与脚本编写
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 将自动化测试接入CI/CD流水线，实现每日定时回归验证
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 执行性能与压力测试，保障高并发场景下的系统稳定性
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 参与需求评审，编写测试用例，跟踪缺陷闭环，输出测试报告
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">工作业绩:</h4>
-                            <ul class="space-y-2">
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 质量保障：累计执行用例1000+条，推动修复缺陷300+个，保障10+个大版本线上重大事故为0
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 自动化成果：核心场景自动化覆盖率达70%，回归测试时间从3人天压缩至6小时；通过CI/CD流水线累计拦截版本缺陷50+个
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 性能优化：优化客群圈选查询，响应时间从8秒降至1.5秒；验证日均500万级消息推送稳定性
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 业务支撑：保障20+个金融、零售行业重点客户私域项目上线，支撑触达用户超5000万人次
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 5 -->
-                <div class="glass-effect rounded-2xl overflow-hidden card-hover">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-semibold mb-2 neon-purple">中国银行CDMS客户数据管理系统</h3>
-                        <p class="text-gray-400 mb-4">兔展智能科技有限公司 | 银行/金融/小程序/web</p>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">项目概述:</h4>
-                            <p class="text-gray-300">CDMS（客户数据管理）系统是中国银行数字化营销体系的核心基础平台。该系统与"北斗"小程序协同，通过数据驱动和策略自动化，赋能一线员工开展精细化客群运营，实现从场景用户向高价值客户的转化。构建了数据中心（6000+标签）、策略中心（可视化画布）、活动中心、权益中心、触达中心（多渠道）及评价中心六大模块，实现从客户洞察、策略配置、活动执行到效果评估的闭环管理。</p>
-                        </div>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">工作职责:</h4>
-                            <ul class="space-y-2">
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 负责CDMS Web端及"北斗"小程序的全流程功能、接口及回归测试
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 负责活动发布、权益发送、客群圈选等核心模块的自动化测试脚本编写与维护，搭建自动化测试框架
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 执行性能与压力测试，保障高并发场景下的系统稳定性
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 参与需求评审，编写测试用例，跟踪缺陷闭环，输出测试报告
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 将核心营销流程接入CI/CD流水线，实现每日定时自动化回归验证
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">工作业绩:</h4>
-                            <ul class="space-y-2">
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 质量保障：累计执行用例800+条，推动修复缺陷200+个，保障6次大版本迭代线上重大事故为0
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 自动化成果：主导完成核心场景自动化覆盖，覆盖率达65%，实现每日定时回归；将回归测试时间从2人天压缩至4小时，有效拦截版本引入缺陷30+个
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 性能优化：优化SQL性能，复杂圈选响应从12秒降至2秒内；完成触达中心压力测试，验证日均百万级消息推送稳定性
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 业务支撑：保障"开门红"等10+个总行级营销活动上线，验证50+个策略组合，支撑触达用户超百万人次
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 6 -->
-                <div class="glass-effect rounded-2xl overflow-hidden card-hover">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-semibold mb-2 neon-purple">易工品供应链履约业务线</h3>
-                        <p class="text-gray-400 mb-4">广州易工品科技有限公司 | 互联网/履约/web/app/小程序</p>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">项目概述:</h4>
-                            <p class="text-gray-300">易工品履约业务线主要包括订单下单到发货，客户签收整个链路的流程，整个履约业务从创建订单，采购，库存仓储、发货，到客户签收的整个流程;包括里面的订单管理系统(OMS)管理维护订单数据，采购管理系统(SPM)维护采购供应商数据，仓储管理系统(WMS)维护仓库库存，出入库、盘点等业务，运输管理系统(TMS)承运商管理、分配司机调度。路线等，中央库存管理系统(CIS)区分管理不同物料库存，匹配仓库。</p>
-                        </div>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">工作内容:</h4>
-                            <ul class="space-y-2">
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 负责全链路履约系统测试（订单→采购→仓储→物流→签收），主导需求评审、任务拆分、用例评审、风险跟踪，使用 Jacoco 保证覆盖率 >90%
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 执行高并发场景性能测试（JMeter），监控服务器资源，定位死锁、OOM、慢查询等瓶颈，输出性能报告并推动调优
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 搭建 Pytest+Allure+YAML 接口自动化框架，封装请求/日志/断言，集成 Jenkins + Docker 实现 CI/CD 回归
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 通过 ELK 定位线上问题，对第三方依赖采用 Mock 测试；制定弱网、兼容等专项策略并输出报告
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 组织技术分享与站会，沉淀经验文档，编写 MySQL 存储过程及 Python 工具提升数据构造效率
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">工作业绩:</h4>
-                            <ul class="space-y-2">
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 参与履约线从 0 到 1 建设，完成 100+ 次版本迭代，上线后无重大缺陷
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 编写 3000+ 条测试用例，发现数百个缺陷；接口自动化覆盖近百个脚本，集成 CI/CD
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-star text-primary mr-2"></i> 输出多份性能测试报告，协助解决多项性能瓶颈；提出多项流程优化建议，输出 10+ 篇技术文档
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 7 -->
-                <div class="glass-effect rounded-2xl overflow-hidden card-hover">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-semibold mb-2 neon-purple">粤省事（粤康码）项目</h3>
-                        <p class="text-gray-400 mb-4">数字广东公司 | 政务/小程序</p>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">项目概述:</h4>
-                            <p class="text-gray-300">"粤省事"是我国首个集成民生服务微信小程序，是由数字广东公司牵头开发的一个广东省民生类小程序；该小程序把广东各地市的民生业务，驾驶证、社保、公积金、粤康码等集合到一个小程序里；本公司在粤省事项目中，负责研发广州交管业务、深圳公积金业务、返校健康申报；交管业务包含了：广州交通违法处理、机动车业务的预约办理、驾驶证行驶证的线上补换等，还有深圳公积金项目包含：深圳公积金查询、线上公积金提取、线下预约业务等。</p>
-                        </div>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">项目职责:</h4>
-                            <ul class="space-y-2">
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 熟悉业务流程、理解需求，利用 XMind 画出思维导图提取功能测试的测试点，编写测试用例
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 在项目管理 TAPD 中提交和跟踪 bug，确保 Bug 已修复并进行回归测试
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 用 Jmeter 执行接口性能测试，通过断言检查服务器返回结果和预期结果是否一致，对接口进行压力测试，进入服务器查看 cpu、内存等运行情况，并提交接口性能测试报告
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 使用 git 命令把交管业务、公积金业务的代码跟粤省事主包进行合包测试
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 使用 httprunner 对接口进行自动化测试，部署添加到 Jenkins 定时构建，长期把控功能稳定
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 8 -->
-                <div class="glass-effect rounded-2xl overflow-hidden card-hover">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-semibold mb-2 neon-purple">佛山易行 app / 广州交警 app</h3>
-                        <p class="text-gray-400 mb-4">广州优路加信息科技有限公司 | 交通/移动应用</p>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">项目概述:</h4>
-                            <p class="text-gray-300">佛山易行 app 是佛山高速管理局牵头的一个项目，佛山佛山 app 是给广大车主使用的一款手机 app 应用，向公众推出的信息化服务和路况查询软件，为公众出行提供实时、准确、便捷、个性化的交通信息服务。出行易 app 的主要功能包括：高速路况爆料、高速实时路况信息、高速路况直播、粤通卡 ETC 注册办理、分时优惠、高速救援申请等业务。</p>
-                        </div>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">项目职责:</h4>
-                            <ul class="space-y-2">
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 参加业务需求分析和讨论，熟悉业务，将业务需求转化为测试需求、编写测试用例
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 对 APP 的 ios 系统、安卓系统兼容进行测试
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 利用 jmeter 测试接口性能测试，并提交接口性能测试报告
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 使用 adb、monkey 命令对 app 进行安装卸载升级、随机性等测试
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 9 -->
-                <div class="glass-effect rounded-2xl overflow-hidden card-hover">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-semibold mb-2 neon-purple">工采易电商项目</h3>
-                        <p class="text-gray-400 mb-4">广州易工品科技有限公司 | 电商/供应链</p>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">项目概述:</h4>
-                            <p class="text-gray-300">工采易是一个专注于 MRO（维护、维修和运营）产品的电商平台，旨在为大 B 企业客户和小 B 五金店用户供高效、便捷的采购和供应链管理解决方案。平台涵盖订单管理、运营管理、履约服务、采购管理、仓储与库存管理以及财务服务等多个核心模块，通过整合资源和优化流程，提升采购效率和降低成本。</p>
-                        </div>
-                        <div class="mb-6">
-                            <h4 class="font-semibold mb-2">项目职责:</h4>
-                            <ul class="space-y-2">
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 参与需求评审、技术设计评审、通过经验对需求进行测试任务拆分、测试工时评估、合理分配测试资源进行测试，分配好测试任务后，组织测试用例评审，提供冒烟用例，测试阶段组织测试进度会议，总结测试进度情况、开发缺陷情况，风险影响等
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 在项目管理 jira 中提交和跟踪 bug，确保 Bug 已修复并进行回归测试，总结统计不同缺陷，按需进行项目复盘
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 对高使用的场景用 Jmeter 执行接口性能测试，通过断言检查服务器返回结果和预期结果是否一致，对接口进行压力测试，进入服务器查看 cpu、内存等运行情况，总结性能测试结论
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 在业务大版本上线后，推动接口自动化（pytest+alluure+yaml）使用，提高测试回归的效率，分配组员维护各自模块的接口脚本，我主要负责接口自动化框架搭建，基础日志模块、登录模块、底层模块维护，并在 docker 上维护好 Python 环境，然后在 Jenkins 上搭建好任务
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 定期总结测试项目的经验文档、在组内组织不定期组织培训、每周站会，鼓励大家多总结多记录多沉淀，完成大家共同进步成长
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fa fa-check text-primary mr-2"></i> 编写制定专项测试策略（弱网测试、兼容测试、接口测试等），对系统进行专项测试（主要功能场景），并且输出对应专项测试测试报告
-                                </li>
-                            </ul>
+                        <div class="timeline-tags">
+                            <span class="tag">功能测试</span>
+                            <span class="tag">缺陷管理</span>
+                            <span class="tag">兼容性测试</span>
                         </div>
                     </div>
                 </div>
@@ -672,130 +1032,354 @@
         </div>
     </section>
 
-    <!-- Self Evaluation Section -->
-    <section id="self-evaluation" class="py-20 bg-darker relative pl-16 md:pl-24">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-16 text-center">
-                <span class="text-gradient">自我评价</span>
-            </h2>
-            <div class="glass-effect p-8 rounded-2xl max-w-4xl mx-auto card-hover">
-                <div class="mb-6">
-                    <h4 class="text-xl font-semibold mb-4 neon-purple">专业能力</h4>
-                    <p class="text-lg">本人具有 7 年的丰富的测试，担任多个项目的测试负责人，在软件的生命周期内进行质量把控</p>
+    <!-- Project Experience (Bento Cards) -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Projects</div>
+                <h2 class="section-title">项目经验</h2>
+                <p class="section-subtitle">便当盒式卡片布局 · 精选核心项目成果</p>
+            </div>
+
+            <div class="bento-grid">
+                <!-- Featured Card -->
+                <div class="bento-card featured reveal">
+                    <div class="card-glow"></div>
+                    <div class="scanline"></div>
+                    <div class="bento-icon">🔧</div>
+                    <div class="bento-card-title">全链路自动化测试平台</div>
+                    <div class="bento-card-desc">
+                        基于 Python + Selenium + Requests 构建的统一自动化测试框架，支持 Web、接口、App 全端测试场景。集成 Jenkins 实现持续集成，支持分布式执行，日均运行测试 5000+ 次，测试覆盖率提升至 90%。
+                    </div>
+                    <div class="bento-card-metrics">
+                        <div class="metric">
+                            <div class="metric-value">90%</div>
+                            <div class="metric-label">自动化覆盖率</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">5000+</div>
+                            <div class="metric-label">日均测试次数</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">40%</div>
+                            <div class="metric-label">交付周期缩短</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-6">
-                    <h4 class="text-xl font-semibold mb-4 neon-purple">沟通能力</h4>
-                    <p class="text-lg">对项目的系统逻辑和业务逻辑能够迅速了解，跟产品、开发、业务的沟通能够高效的分析业务需求逻辑合理性，一起沟通解决；在测试团队中也能合理沟通，完成测试任务</p>
+
+                <!-- Card 2 -->
+                <div class="bento-card reveal reveal-delay-1">
+                    <div class="card-glow"></div>
+                    <div class="scanline"></div>
+                    <div class="bento-icon">⚡</div>
+                    <div class="bento-card-title">性能测试体系</div>
+                    <div class="bento-card-desc">
+                        搭建 JMeter + Grafana 性能监控平台，制定性能测试 SOP，覆盖核心接口压测场景。
+                    </div>
+                    <div class="bento-card-metrics">
+                        <div class="metric">
+                            <div class="metric-value">60%</div>
+                            <div class="metric-label">响应时间降低</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">20+</div>
+                            <div class="metric-label">性能瓶颈修复</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-6">
-                    <h4 class="text-xl font-semibold mb-4 neon-purple">学习能力</h4>
-                    <p class="text-lg">熟悉掌握市面上常用的测试工具，并保持这对新技术的持续学习，了解更多的测试技能来提高工作效率</p>
+
+                <!-- Card 3 -->
+                <div class="bento-card reveal reveal-delay-2">
+                    <div class="card-glow"></div>
+                    <div class="scanline"></div>
+                    <div class="bento-icon">🔌</div>
+                    <div class="bento-card-title">接口测试平台</div>
+                    <div class="bento-card-desc">
+                        设计统一接口测试平台，集成 Swagger 文档自动解析，支持参数化与数据驱动测试。
+                    </div>
+                    <div class="bento-card-metrics">
+                        <div class="metric">
+                            <div class="metric-value">2000+</div>
+                            <div class="metric-label">接口用例数</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">6x</div>
+                            <div class="metric-label">回归效率提升</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-6">
-                    <h4 class="text-xl font-semibold mb-4 neon-purple">团队管理能力</h4>
-                    <p class="text-lg">有测试小组的管理经验，包括任务分配，测试指导、组内业务指导、技术指导等</p>
+
+                <!-- Card 4 -->
+                <div class="bento-card reveal reveal-delay-3">
+                    <div class="card-glow"></div>
+                    <div class="scanline"></div>
+                    <div class="bento-icon">🚀</div>
+                    <div class="bento-card-title">CI/CD 质量门禁</div>
+                    <div class="bento-card-desc">
+                        在 Jenkins 流水线中嵌入自动化测试门禁，实现代码提交即触发测试，阻断不合格代码合并。
+                    </div>
+                    <div class="bento-card-metrics">
+                        <div class="metric">
+                            <div class="metric-value">99.5%</div>
+                            <div class="metric-label">门禁通过率</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">100%</div>
+                            <div class="metric-label">合并覆盖</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bento-card reveal reveal-delay-4">
+                    <div class="card-glow"></div>
+                    <div class="scanline"></div>
+                    <div class="bento-icon">📱</div>
+                    <div class="bento-card-title">移动端质量保障</div>
+                    <div class="bento-card-desc">
+                        构建 Appium 自动化体系，覆盖 iOS/Android 双平台，兼容多机型兼容性测试。
+                    </div>
+                    <div class="bento-card-metrics">
+                        <div class="metric">
+                            <div class="metric-value">50+</div>
+                            <div class="metric-label">测试机型</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">2</div>
+                            <div class="metric-label">主流平台</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bento-card reveal reveal-delay-5">
+                    <div class="card-glow"></div>
+                    <div class="scanline"></div>
+                    <div class="bento-icon">📊</div>
+                    <div class="bento-card-title">测试数据平台</div>
+                    <div class="bento-card-desc">
+                        搭建测试数据管理平台，实现数据准备自动化，支持多环境数据隔离与快速恢复。
+                    </div>
+                    <div class="bento-card-metrics">
+                        <div class="metric">
+                            <div class="metric-value">85%</div>
+                            <div class="metric-label">数据准备效率</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">5+</div>
+                            <div class="metric-label">测试环境</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section" id="skills">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Skills</div>
+                <h2 class="section-title">专业技能</h2>
+                <p class="section-subtitle">技术栈覆盖测试全生命周期</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-category reveal reveal-delay-1">
+                    <div class="skill-cat-title">
+                        <div class="skill-cat-icon">🛠️</div>
+                        测试工具
+                    </div>
+                    <div class="skill-list">
+                        <span class="skill-item">Selenium</span>
+                        <span class="skill-item">Appium</span>
+                        <span class="skill-item">Postman</span>
+                        <span class="skill-item">JMeter</span>
+                        <span class="skill-item">Pytest</span>
+                        <span class="skill-item">Unittest</span>
+                        <span class="skill-item">Robot Framework</span>
+                        <span class="skill-item">Charles</span>
+                        <span class="skill-item">Fiddler</span>
+                    </div>
+                </div>
+
+                <div class="skill-category reveal reveal-delay-2">
+                    <div class="skill-cat-title">
+                        <div class="skill-cat-icon">💻</div>
+                        编程语言
+                    </div>
+                    <div class="skill-list">
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">JavaScript</span>
+                        <span class="skill-item">Shell</span>
+                        <span class="skill-item">SQL</span>
+                        <span class="skill-item">Java</span>
+                        <span class="skill-item">Go</span>
+                    </div>
+                </div>
+
+                <div class="skill-category reveal reveal-delay-3">
+                    <div class="skill-cat-title">
+                        <div class="skill-cat-icon">☁️</div>
+                        DevOps / CI
+                    </div>
+                    <div class="skill-list">
+                        <span class="skill-item">Jenkins</span>
+                        <span class="skill-item">GitLab CI</span>
+                        <span class="skill-item">Docker</span>
+                        <span class="skill-item">K8s</span>
+                        <span class="skill-item">Ansible</span>
+                        <span class="skill-item">Git</span>
+                        <span class="skill-item">Maven</span>
+                    </div>
+                </div>
+
+                <div class="skill-category reveal reveal-delay-4">
+                    <div class="skill-cat-title">
+                        <div class="skill-cat-icon">🎯</div>
+                        测试领域
+                    </div>
+                    <div class="skill-list">
+                        <span class="skill-item">功能测试</span>
+                        <span class="skill-item">接口测试</span>
+                        <span class="skill-item">性能测试</span>
+                        <span class="skill-item">自动化测试</span>
+                        <span class="skill-item">安全测试</span>
+                        <span class="skill-item">兼容性测试</span>
+                        <span class="skill-item">回归测试</span>
+                        <span class="skill-item">冒烟测试</span>
+                    </div>
+                </div>
+
+                <div class="skill-category reveal reveal-delay-5">
+                    <div class="skill-cat-title">
+                        <div class="skill-cat-icon">🗄️</div>
+                        数据库 / 监控
+                    </div>
+                    <div class="skill-list">
+                        <span class="skill-item">MySQL</span>
+                        <span class="skill-item">Redis</span>
+                        <span class="skill-item">MongoDB</span>
+                        <span class="skill-item">Prometheus</span>
+                        <span class="skill-item">Grafana</span>
+                        <span class="skill-item">ELK</span>
+                    </div>
+                </div>
+
+                <div class="skill-category reveal reveal-delay-5">
+                    <div class="skill-cat-title">
+                        <div class="skill-cat-icon">📋</div>
+                        管理 / 方法论
+                    </div>
+                    <div class="skill-list">
+                        <span class="skill-item">测试计划</span>
+                        <span class="skill-item">缺陷管理</span>
+                        <span class="skill-item">测试报告</span>
+                        <span class="skill-item">敏捷测试</span>
+                        <span class="skill-item">STAR法则</span>
+                        <span class="skill-item">流程优化</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 bg-dark pl-16 md:pl-24">
-        <div class="container mx-auto px-4 text-center">
-            <div class="flex justify-center space-x-6 mb-8">
-                <a href="#" class="text-gray-400 hover:text-secondary transition-colors duration-300">
-                    <i class="fa fa-github text-2xl"></i>
-                </a>
-                <a href="#" class="text-gray-400 hover:text-secondary transition-colors duration-300">
-                    <i class="fa fa-linkedin text-2xl"></i>
-                </a>
-                <a href="#" class="text-gray-400 hover:text-secondary transition-colors duration-300">
-                    <i class="fa fa-envelope text-2xl"></i>
-                </a>
-            </div>
-            <p class="text-gray-400">© 2026 李友超 - 高级测试工程师</p>
+    <footer>
+        <div class="container">
+            <p class="footer-text">
+                Designed & Built by <span>LiYouchao</span> · Senior Test Engineer · 2026
+            </p>
         </div>
     </footer>
 
     <script>
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    // 移除所有导航链接的active类
-                    document.querySelectorAll('.nav-link').forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    // 为当前点击的链接添加active类
-                    this.classList.add('active');
-                    // 平滑滚动到目标位置
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
+        // Page Loader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('pageLoader').classList.add('hidden');
+            }, 600);
         });
 
-        // 滚动时更新导航active状态
-        window.addEventListener('scroll', function() {
-            const scrollPosition = window.scrollY + 100;
-            
-            // 检查每个section的位置
-            const sections = [
-                { id: '#home', element: document.querySelector('#home') },
-                { id: '#skills', element: document.querySelector('#skills') },
-                { id: '#work-experience', element: document.querySelector('#work-experience') },
-                { id: '#projects', element: document.querySelector('#projects') },
-                { id: '#self-evaluation', element: document.querySelector('#self-evaluation') }
-            ];
-            
-            // 找到当前滚动位置对应的section
-            let currentSection = sections[0];
-            for (let section of sections) {
-                if (section.element && section.element.offsetTop <= scrollPosition) {
-                    currentSection = section;
-                }
-            }
-            
-            // 更新导航链接的active状态
-            document.querySelectorAll('.nav-link').forEach(link => {
-                if (link.getAttribute('href') === currentSection.id) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
-            
-            // 视差效果
-            const scrolled = window.pageYOffset;
-            const parallax = document.querySelector('.parallax');
-            if (parallax) {
-                const speed = scrolled * 0.5;
-                parallax.style.transform = `translateY(${speed}px)`;
+        // Nav scroll effect
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
             }
         });
 
-        // 滚动动画
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
+        // Intersection Observer for reveal animations
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('opacity-100', 'translate-y-0');
-                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    entry.target.classList.add('visible');
                 }
             });
-        }, observerOptions);
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
 
-        document.querySelectorAll('.glass-effect').forEach(el => {
-            el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700');
-            observer.observe(el);
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Parallax on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const orbs = document.querySelectorAll('.ambient-orb');
+            orbs.forEach((orb, i) => {
+                const speed = [0.05, 0.03, 0.08][i];
+                orb.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+
+            // Hero title parallax
+            const heroTitle = document.querySelector('.hero-title');
+            if (heroTitle) {
+                heroTitle.style.transform = `translateY(${scrolled * 0.3}px)`;
+                heroTitle.style.opacity = 1 - (scrolled / 800);
+            }
+
+            // Floating elements parallax
+            const floats = document.querySelectorAll('.parallax-float');
+            floats.forEach((f, i) => {
+                const speed = [0.1, 0.15, 0.2][i];
+                f.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Bento card mouse tracking
+        document.querySelectorAll('.bento-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                card.style.setProperty('--mouse-x', `${x}%`);
+                card.style.setProperty('--mouse-y', `${y}%`);
+            });
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Tag hover sound-like feedback
+        document.querySelectorAll('.tag').forEach(tag => {
+            tag.addEventListener('mouseenter', () => {
+                tag.style.transform = 'translateY(-2px) scale(1.05)';
+            });
+            tag.addEventListener('mouseleave', () => {
+                tag.style.transform = 'translateY(0) scale(1)';
+            });
         });
     </script>
 </body>
