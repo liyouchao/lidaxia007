@@ -102,6 +102,7 @@
             right: 0;
             z-index: 100;
             padding: 16px 0;
+            padding-top: max(16px, env(safe-area-inset-top));
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             background: rgba(10, 10, 15, 0.8);
@@ -115,18 +116,20 @@
         }
 
         .nav-container {
-            max-width: 1200px;
+            width: fit-content;
             margin: 0 auto;
             padding: 0 24px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
         }
 
         .logo {
             font-size: 18px;
             font-weight: 600;
             letter-spacing: -0.02em;
+            flex-shrink: 0;
         }
 
         .nav-links {
@@ -758,40 +761,50 @@
 
         .mobile-nav {
             display: none;
-            position: fixed;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(20, 20, 30, 0.95);
-            border: 1px solid var(--glass-border);
-            border-radius: 100px;
-            padding: 12px 24px;
+            position: relative;
+            background: rgba(20, 20, 30, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 8px 12px;
             backdrop-filter: blur(20px);
-            z-index: 100;
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 99;
+            margin-top: 12px;
         }
 
         .mobile-nav-links {
             display: flex;
-            gap: 8px;
+            gap: 4px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .mobile-nav-link {
-            padding: 10px 16px;
+            padding: 8px 12px;
             border-radius: 100px;
             font-size: 12px;
             color: var(--text-secondary);
             text-decoration: none;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .mobile-nav-link.active {
-            background: rgba(168, 85, 247, 0.2);
+            background: rgba(168, 85, 247, 0.3);
             color: var(--text-primary);
         }
 
         @media (max-width: 768px) {
             .mobile-nav {
                 display: block;
+            }
+
+            main {
+                padding-bottom: 80px;
+            }
+
+            .hero-content {
+                padding-top: 160px;
             }
 
             .section {
@@ -810,7 +823,6 @@
 
     <header id="header">
         <div class="nav-container">
-            <div class="logo">李友超</div>
             <nav class="nav-links">
                 <a href="#info" class="nav-link">个人信息</a>
                 <a href="#experience" class="nav-link">工作经验</a>
@@ -818,18 +830,17 @@
                 <a href="#skills" class="nav-link">专业技能</a>
                 <a href="#about" class="nav-link">自我评价</a>
             </nav>
+            <div class="mobile-nav">
+                <div class="mobile-nav-links">
+                    <a href="#info" class="mobile-nav-link">信息</a>
+                    <a href="#experience" class="mobile-nav-link">工作</a>
+                    <a href="#projects" class="mobile-nav-link">项目</a>
+                    <a href="#skills" class="mobile-nav-link">技能</a>
+                    <a href="#about" class="mobile-nav-link">关于</a>
+                </div>
+            </div>
         </div>
     </header>
-
-    <div class="mobile-nav">
-        <div class="mobile-nav-links">
-            <a href="#info" class="mobile-nav-link">信息</a>
-            <a href="#experience" class="mobile-nav-link">工作</a>
-            <a href="#projects" class="mobile-nav-link">项目</a>
-            <a href="#skills" class="mobile-nav-link">技能</a>
-            <a href="#about" class="mobile-nav-link">关于</a>
-        </div>
-    </div>
 
     <main class="container">
         <section id="info" class="section">
@@ -901,7 +912,7 @@
                         </ul>
                     </div>
                     <div class="experience-meta">
-                        <p class="experience-period">2024.08 - 至今</p>
+                        <p class="experience-period">2024.08 - 2026.04</p>
                         <span class="experience-type">测试组长</span>
                     </div>
                 </div>
